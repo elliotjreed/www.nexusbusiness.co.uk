@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import "swiper/swiper.scss";
+
 export const Views = (): JSX.Element => {
   return (
     <section className="members-view">

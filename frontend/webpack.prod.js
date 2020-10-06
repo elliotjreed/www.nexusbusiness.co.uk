@@ -5,7 +5,6 @@ const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const glob = require("glob");
 const commonConfig = require("./webpack.common");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const PurgecssPlugin = require("purgecss-webpack-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -76,11 +75,6 @@ module.exports = merge(commonConfig, {
     new MiniCssExtractPlugin({
       chunkFilename: "[id].[hash].css",
       filename: "[name].[hash].css"
-    }),
-    new PurgecssPlugin({
-      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-      whitelistPatterns: [/swiper-/],
-      whitelistPatternsChildren: [/swiper-/]
     }),
     new CopyPlugin({ patterns: [{ from: "./assets/static", to: "./" }] }),
     new WorkboxPlugin.GenerateSW({
