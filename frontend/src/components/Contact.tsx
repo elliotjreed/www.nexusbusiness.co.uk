@@ -1,19 +1,20 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
-
-const renderSuccess: JSX.Element = (
-  <div className="notification is-primary has-text-centered">
-    Thank you for your enquiry. I&apos;ll get back to you shortly!
-  </div>
-);
+import { useState } from "react";
 
 const Contact = (): JSX.Element => {
   const [error, setError] = useState("");
+  const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccessful] = useState(false);
 
   const handleSubmit = (event): void => {
     event.preventDefault();
+
+    if (!checked) {
+      setError("Please confirm your are happy to be contacted by us.");
+      return;
+    }
+
     setLoading(true);
     fetch("https://api.nexusbusiness.co.uk", {
       body: new URLSearchParams(new FormData(event.target) as URLSearchParams),
@@ -63,13 +64,13 @@ const Contact = (): JSX.Element => {
       <div className="field">
         <div className="control">
           <label htmlFor="confirm" className="checkbox confirm" id="confirmLabel">
-            <input type="checkbox" id="confirm" />I am happy for Leadership Gateway Ltd to contact me by email and use
-            the details provided to process and record my enquiry. I understand that consent can be withdrawn at any
-            time by contacting info@nexusbusiness.co.uk.
+            <input type="checkbox" id="confirm" checked={checked} onChange={() => setChecked(!checked)} />I am happy for
+            Leadership Gateway Ltd to contact me by email and use the details provided to process and record my enquiry.
+            I understand that consent can be withdrawn at any time by contacting info@nexusbusiness.co.uk.
           </label>
         </div>
       </div>
-      <button className="go-button" disabled={loading}>
+      <button className="go-button" disabled={loading && !checked}>
         Find Out More
       </button>
     </form>
