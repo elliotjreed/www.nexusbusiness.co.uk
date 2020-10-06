@@ -1,0 +1,29 @@
+.nexus-field {
+  padding: 0.5em;
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.5em;
+    border: 0;
+
+    &::placeholder {
+      color: #ccc;
+    }
+  }
+
+  input {
+    height: 2.5em;
+  }
+
+  textarea {
+    height: 6em;
+    resize: none;
+  }
+}
+
+.confirm {
+  padding: 0.5em;
+  color: #4a4a4a;
+  font-size: small;
+}

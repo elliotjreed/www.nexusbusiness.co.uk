@@ -1,0 +1,52 @@
+version: "3.6"
+
+services:
+  nexusbusiness-php:
+    image: elliotjreed/nexusbusiness-php
+    container_name: nexusbusiness-php
+    restart: always
+    networks:
+      - nexusbusiness
+    volumes:
+      - ./api/.env:/var/www/html/.env
+
+  nexusbusiness-api-nginx:
+    image: elliotjreed/nexusbusiness-api-nginx
+    container_name: nexusbusiness-api-nginx
+    restart: always
+    networks:
+      - nexusbusiness
+      - web
+    depends_on:
+      - nexusbusiness-php
+    labels:
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:api.nexusbusiness.co.uk"
+      - "traefik.protocol=h2c"
+      - "traefik.port=95"
+
+  nexusbusiness-nginx:
+    image: elliotjreed/nexusbusiness-nginx
+    container_name: nexusbusiness-nginx
+    restart: always
+    networks:
+      - nexusbusiness
+      - web
+    depends_on:
+      - nexusbusiness-php
+      - nexusbusiness-api-nginx
+    labels:
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+      - "traefik.nonwww.frontend.rule=Host:nexusbusiness.co.uk"
+      - "traefik.www.frontend.rule=Host:www.nexusbusiness.co.uk"
+      - "traefik.protocol=h2c"
+      - "traefik.port=94"
+
+networks:
+  web:
+    external: true
+  nexusbusiness:
+    name: nexusbusiness
+

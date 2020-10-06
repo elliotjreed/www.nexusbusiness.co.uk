@@ -1,0 +1,23 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+@import "~bulma/sass/utilities/all";
+@import "~bulma/sass/base/generic";
+@import "~bulma/sass/grid/columns";
+@import "~bulma/sass/elements/container";
+@import "~bulma/sass/elements/form";
+@import "~bulma/sass/elements/button";
+@import "~bulma/sass/elements/notification";
+@import "~bulma/sass/components/navbar";
+@import "~bulma/sass/components/card";
+@import "~bulma/sass/components/modal";
+@import "~bulma/sass/elements/other";
+@import "modules/header";
+@import "modules/main";
+@import "modules/footer";
+@import "modules/swiper";
+@import "partials/text";
+@import "partials/form";
+@import "partials/loader";
+@import "partials/modal";

@@ -1,0 +1,10 @@
+.idea
+/frontend/dist
+/frontend/node_modules
+/frontend/coverage
+/api/coverage
+/api/vendor
+/api/build
+/api/clover.xml
+.env
+.phpunit.result.cache

@@ -1,0 +1,93 @@
+$image-path-prefix: "images/" !default;
+
+.main {
+  text-align: center;
+
+  @include desktop {
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  section {
+    padding: 1.5em;
+
+    ul {
+      list-style: inside;
+    }
+  }
+
+  .header-image {
+    height: 250px;
+    background: url("https://res.cloudinary.com/elliotjreed/image/upload/v1602007649/nexus/montage.png") center no-repeat;
+
+    @include mobile {
+      background: url("https://res.cloudinary.com/elliotjreed/image/upload/v1602007649/nexus/montage.png") 70% no-repeat;
+    }
+  }
+
+  .members {
+    margin-top: 1em;
+  }
+
+  .members-view {
+    position: relative;
+    text-align: center;
+
+    p {
+      text-align: center;
+    }
+
+    img {
+      max-width: 10em;
+      height: auto;
+    }
+  }
+
+  .bg-purple {
+    color: #fff;
+    background-color: #a65071;
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  .bg-green {
+    color: #fff;
+    background-color: #8ba44e;
+  }
+
+  .bg-grey {
+    background-color: #868b7c;
+  }
+
+  .claim-session {
+    background-color: #dddfd9;
+
+    @include desktop {
+      .claim-form {
+        width: 50%;
+        margin: 0 auto;
+      }
+    }
+
+    .go-button {
+      width: 8em;
+      height: 2em;
+      padding: 0;
+      font-size: 1.2em;
+      color: #fff;
+      cursor: pointer;
+      background-color: #8ba44e;
+      border: 0;
+      border-radius: 60%;
+
+      &:hover {
+        background-color: #868b7c;
+      }
+    }
+  }
+}
